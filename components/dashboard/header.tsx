@@ -38,16 +38,14 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
               />
             </div>
 
-            {/* World Bank */}
-            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-gray-200">
-              <Image
-                src="/images/worldbank-logo.jpeg"
-                alt="World Bank"
-                width={52}
-                height={52}
-                className="object-contain"
-              />
+
+
+            {/* Title */}
+            <div className="ml-4">
+              <h1 className="text-xl font-bold text-[#FF0000] tracking-wide">GOMBE STATE EMERGENCY MEDICAL SERVICES & AMBULANCE SYSTEM (SEMSAS)</h1>
+              <p className="text-xs text-gray-500"> SAVING LIVES, SERVING COMMUNITIES</p>
             </div>
+
 
             {/* Gombe State Ministry of Health */}
             <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-gray-200">
@@ -60,10 +58,16 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
               />
             </div>
 
-            {/* Title */}
-            <div className="ml-4">
-              <h1 className="text-xl font-bold text-[#FF0000] tracking-wide">GOMBE STATE EMERGENCY MEDICAL SERVICES & AMBULANCE SYSTEM (SEMSAS)</h1>
-              <p className="text-xs text-gray-500"> SAVING LIVES, SERVING COMMUNITIES</p>
+
+            {/* World Bank */}
+            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-gray-200">
+              <Image
+                src="/images/worldbank-logo.jpeg"
+                alt="World Bank"
+                width={52}
+                height={52}
+                className="object-contain"
+              />
             </div>
           </div>
 
