@@ -3,99 +3,103 @@
 import { SectionPanel } from "../section-panel"
 import { AnimatedNumber } from "../animated-number"
 import { PatientIcon } from "../visual-icons"
-import { Truck, ThumbsUp, MinusCircle, AlertTriangle, Route } from "lucide-react"
+import { Truck, Baby, AlertTriangle, Car } from "lucide-react"
 import type { DashboardData } from "@/lib/dashboard-data"
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Legend, Tooltip } from "recharts"
 
 interface TransportSectionProps {
   data: DashboardData["transport"]
 }
 
 export function TransportSection({ data }: TransportSectionProps) {
-  const outcomeData = [
-    { name: "Good Recovery", value: data.patientOutcomes.positive, color: "#00A86B", icon: ThumbsUp },
-    { name: "Stable", value: data.patientOutcomes.neutral, color: "#FFB81C", icon: MinusCircle },
-    { name: "Serious", value: data.patientOutcomes.critical, color: "#DC143C", icon: AlertTriangle },
+  const summaryData = [
+    { name: "Safe Deliveries", value: data.totalDeliveries, color: "#00A86B", icon: Baby },
+    { name: "Other Emergencies", value: data.totalOtherEmergencies, color: "#FFB81C", icon: AlertTriangle },
+    { name: "Road Accidents (RESMAT)", value: data.resmatCases, color: "#DC143C", icon: Car },
   ]
 
   return (
     <SectionPanel
       title="Patient Transport"
-      subtitle="Moving patients to care"
+      subtitle="Emergency cases handled"
       icon={Truck}
       illustration={<PatientIcon className="w-full h-28" />}
     >
-      <div className="flex items-center justify-center gap-8 h-full">
-        {/* Donut Chart */}
-        <div className="relative w-64 h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={outcomeData}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-                paddingAngle={3}
-                dataKey="value"
-                animationDuration={1200}
-              >
-                {outcomeData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-          {/* Center content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <Truck className="w-8 h-8 text-[#0052A5] mb-1" />
-            <p className="text-4xl font-bold text-gray-900">
-              <AnimatedNumber value={data.completedToday} />
-            </p>
-            <p className="text-xs text-gray-500">Moved Today</p>
-          </div>
-        </div>
-
-        {/* Outcomes with icons */}
-        <div className="space-y-3 w-60">
-          <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">Patient Outcomes</p>
-
-          {outcomeData.map((item) => {
+      <div className="flex flex-col h-full gap-4">
+        {/* Summary cards */}
+        <div className="flex justify-center gap-4">
+          {summaryData.map((item) => {
             const IconComponent = item.icon
             return (
               <div
                 key={item.name}
-                className="flex items-center gap-3 p-3 rounded-xl"
+                className="flex items-center gap-3 p-3 rounded-xl flex-1 max-w-[200px]"
                 style={{ backgroundColor: `${item.color}15` }}
               >
                 <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
                   style={{ backgroundColor: item.color }}
                 >
-                  <IconComponent className="w-5 h-5 text-white" />
+                  <IconComponent className="w-6 h-6 text-white" />
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm text-gray-600">{item.name}</p>
+                <div>
+                  <p className="text-2xl font-bold" style={{ color: item.color }}>
+                    <AnimatedNumber value={item.value} />
+                  </p>
+                  <p className="text-xs text-gray-600 leading-tight">{item.name}</p>
                 </div>
-                <p className="text-xl font-bold" style={{ color: item.color }}>
-                  {item.value}%
-                </p>
               </div>
             )
           })}
+        </div>
 
-          {/* Distance */}
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-blue-50 mt-4">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0052A5]">
-              <Route className="w-5 h-5 text-white" />
-            </div>
-            <div className="flex-1">
-              <p className="text-sm text-gray-600">Distance Covered</p>
-            </div>
-            <p className="text-xl font-bold text-[#0052A5]">
-              <AnimatedNumber value={data.distanceCovered} suffix=" km" />
-            </p>
+        {/* Monthly breakdown chart */}
+        <div className="flex-1 bg-gray-50 rounded-xl p-4">
+          <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2 text-center">
+            Monthly Labor & Delivery Cases (June - November 2024)
+          </p>
+          <div className="h-44">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={data.monthlyData} margin={{ left: -15, right: 10 }}>
+                <XAxis dataKey="month" tick={{ fontSize: 11, fill: "#6B7280" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 10, fill: "#6B7280" }} axisLine={false} tickLine={false} />
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: "8px",
+                    border: "1px solid #e5e7eb",
+                    fontSize: "12px",
+                  }}
+                />
+                <Legend
+                  verticalAlign="top"
+                  height={30}
+                  formatter={(value) => <span className="text-xs text-gray-600">{value}</span>}
+                />
+                <Bar
+                  dataKey="deliveries"
+                  name="Safe Deliveries"
+                  fill="#00A86B"
+                  radius={[4, 4, 0, 0]}
+                  animationDuration={1200}
+                />
+                <Bar
+                  dataKey="otherEmergencies"
+                  name="Other Cases"
+                  fill="#FFB81C"
+                  radius={[4, 4, 0, 0]}
+                  animationDuration={1200}
+                />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
+        </div>
+
+        {/* RESMAT explanation */}
+        <div className="p-3 bg-red-50 rounded-lg border border-red-200">
+          <p className="text-xs text-gray-600">
+            <strong className="text-[#DC143C]">RESMAT</strong> = Road Emergency Services Medical Assistance Team -
+            handles road traffic accident cases
+          </p>
         </div>
       </div>
     </SectionPanel>

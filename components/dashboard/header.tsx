@@ -62,8 +62,8 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
 
             {/* Title */}
             <div className="ml-4">
-              <h1 className="text-xl font-bold text-[#0052A5] tracking-wide">GOMBE STATE EMERGENCY MEDICAL SERVICES</h1>
-              <p className="text-xs text-gray-500">& AMBULANCE SYSTEM (NEMSAS) • SAVING LIVES, SERVING COMMUNITIES</p>
+              <h1 className="text-xl font-bold text-[#FF0000] tracking-wide">GOMBE STATE EMERGENCY MEDICAL SERVICES & AMBULANCE SYSTEM (SEMSAS)</h1>
+              <p className="text-xs text-gray-500"> SAVING LIVES, SERVING COMMUNITIES</p>
             </div>
           </div>
 

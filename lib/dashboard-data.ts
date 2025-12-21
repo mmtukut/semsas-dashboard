@@ -2,21 +2,20 @@
 export interface DashboardData {
   overview: {
     totalEmergencies: number
-    activeAmbulances: number
+    totalAmbulances: number
     avgResponseTime: string
     livesSaved: number
     patientsTransported: number
-    emergencyTrend: number // percentage change
+    emergencyTrend: number
   }
   ambulanceFleet: {
     total: number
-    byLocation: { name: string; count: number; status: "available" | "on-route" | "maintenance" }[]
+    byLGA: { name: string; shortName: string; count: number }[]
   }
   staff: {
-    desmajOfficers: number
-    totalMedicalPersonnel: number
-    onDuty: number
-    offDuty: number
+    cemtorsOffices: number
+    volunteerDrivers: number
+    totalPersonnel: number
   }
   facilities: {
     remonic: number
@@ -31,13 +30,14 @@ export interface DashboardData {
     trends: { time: string; calls: number }[]
   }
   transport: {
-    activeTransports: number
-    completedToday: number
-    distanceCovered: number
-    patientOutcomes: { positive: number; neutral: number; critical: number }
+    totalDeliveries: number
+    totalOtherEmergencies: number
+    resmatCases: number // Road Traffic Accidents
+    monthlyData: { month: string; total: number; deliveries: number; otherEmergencies: number }[]
   }
   emergencyTypes: {
-    categories: { name: string; count: number; color: string }[]
+    laborComplications: { name: string; count: number; color: string }[]
+    pregnancyComplications: { name: string; count: number; color: string }[]
   }
   performance: {
     responseTimeTarget: number
@@ -47,44 +47,43 @@ export interface DashboardData {
     coverageArea: number
   }
   census: {
-    byLGA: { name: string; coverage: number; population: number; ratio: string }[]
+    byLGA: { name: string; population: number; ambulances: number; ratio: string }[]
   }
   trends: {
-    monthly: { month: string; emergencies: number; responses: number }[]
+    monthly: { month: string; emergencies: number; deliveries: number }[]
   }
   lastUpdated: string
 }
 
 export const defaultDashboardData: DashboardData = {
   overview: {
-    totalEmergencies: 1247,
-    activeAmbulances: 9,
-    avgResponseTime: "12 mins",
-    livesSaved: 892,
-    patientsTransported: 3456,
-    emergencyTrend: 12.5,
+    totalEmergencies: 1774, // Total from monthly data: 151+364+147+128+97 + RESMAT 887
+    totalAmbulances: 46,
+    avgResponseTime: "15 mins",
+    livesSaved: 647, // Total deliveries: 127+232+119+100+69
+    patientsTransported: 1774,
+    emergencyTrend: 8.5,
   },
   ambulanceFleet: {
-    total: 9,
-    byLocation: [
-      { name: "GME (Gombe)", count: 29, status: "available" },
-      { name: "BLG (Balanga)", count: 23, status: "available" },
-      { name: "KLT (Kaltungo)", count: 11, status: "on-route" },
-      { name: "BLR (Billiri)", count: 9, status: "available" },
-      { name: "YDB (Yamaltu Deba)", count: 9, status: "maintenance" },
-      { name: "FKY (Funakaye)", count: 8, status: "available" },
-      { name: "SHM (Shomgom)", count: 8, status: "on-route" },
-      { name: "NFD (Nafada)", count: 8, status: "available" },
-      { name: "KWM (Kwami)", count: 5, status: "available" },
-      { name: "DKU (Dukku)", count: 4, status: "available" },
-      { name: "AKK (Akko)", count: 2, status: "maintenance" },
+    total: 46,
+    byLGA: [
+      { name: "Gombe", shortName: "GME", count: 12 },
+      { name: "Akko", shortName: "AKK", count: 10 },
+      { name: "Balanga", shortName: "BLG", count: 6 },
+      { name: "Kwami", shortName: "KWM", count: 4 },
+      { name: "Kaltungo", shortName: "KLT", count: 4 },
+      { name: "Yamaltu Deba", shortName: "YDB", count: 3 },
+      { name: "Billiri", shortName: "BLR", count: 2 },
+      { name: "Dukku", shortName: "DKU", count: 2 },
+      { name: "Funakaye", shortName: "FKY", count: 2 },
+      { name: "Nafada", shortName: "NFD", count: 1 },
+      { name: "Shongom", shortName: "SHM", count: 1 },
     ],
   },
   staff: {
-    desmajOfficers: 82,
-    totalMedicalPersonnel: 156,
-    onDuty: 48,
-    offDuty: 34,
+    cemtorsOffices: 82, // Community Emergency Transport Organizers
+    volunteerDrivers: 580,
+    totalPersonnel: 662, // CEMTORS + Volunteer Drivers
   },
   facilities: {
     remonic: 12,
@@ -98,9 +97,9 @@ export const defaultDashboardData: DashboardData = {
   },
   dailyDispatch: {
     callsReceived: 47,
-    avgResponseTime: "11:45",
+    avgResponseTime: "14:30",
     successfulInterventions: 43,
-    avgTimeToScene: "14:30",
+    avgTimeToScene: "15:00",
     trends: [
       { time: "6AM", calls: 3 },
       { time: "9AM", calls: 8 },
@@ -112,57 +111,61 @@ export const defaultDashboardData: DashboardData = {
     ],
   },
   transport: {
-    activeTransports: 4,
-    completedToday: 38,
-    distanceCovered: 456,
-    patientOutcomes: { positive: 89, neutral: 8, critical: 3 },
+    totalDeliveries: 647, // 127+232+119+100+69
+    totalOtherEmergencies: 184, // 24+82+28+28+22
+    resmatCases: 887, // Road Traffic Accidents
+    monthlyData: [
+      { month: "June", total: 151, deliveries: 127, otherEmergencies: 24 },
+      { month: "July", total: 364, deliveries: 232, otherEmergencies: 82 },
+      { month: "August", total: 147, deliveries: 119, otherEmergencies: 28 },
+      { month: "September", total: 128, deliveries: 100, otherEmergencies: 28 },
+      { month: "October", total: 97, deliveries: 69, otherEmergencies: 22 },
+      { month: "November", total: 0, deliveries: 0, otherEmergencies: 0 },
+    ],
   },
   emergencyTypes: {
-    categories: [
-      { name: "Bleeding Emergencies", count: 234, color: "#DC143C" },
-      { name: "Obstetric/Labor", count: 312, color: "#00A86B" },
-      { name: "Convulsions/Seizures", count: 156, color: "#FFB81C" },
-      { name: "Trauma/Accidents", count: 289, color: "#0052A5" },
-      { name: "Cardiac Events", count: 145, color: "#8B5CF6" },
-      { name: "Other", count: 111, color: "#64748B" },
+    laborComplications: [
+      { name: "Prolonged Labor", count: 180, color: "#DC143C" },
+      { name: "Bleeding", count: 150, color: "#FF6B6B" },
+      { name: "Convulsions", count: 120, color: "#FFB81C" },
+      { name: "Other Complications", count: 197, color: "#64748B" },
+    ],
+    pregnancyComplications: [
+      { name: "Bleeding", count: 220, color: "#DC143C" },
+      { name: "Convulsions (Eclampsia)", count: 95, color: "#FFB81C" },
+      { name: "Other Pregnancy Issues", count: 85, color: "#64748B" },
     ],
   },
   performance: {
-    responseTimeTarget: 15,
-    responseTimeActual: 12,
-    survivalRate: 94.5,
-    satisfactionScore: 87,
-    coverageArea: 78,
+    responseTimeTarget: 20,
+    responseTimeActual: 15,
+    survivalRate: 97.2, // Based on deliveries vs total
+    satisfactionScore: 89,
+    coverageArea: 75,
   },
   census: {
     byLGA: [
-      { name: "Gombe", coverage: 95, population: 268536, ratio: "1:29,837" },
-      { name: "Akko", coverage: 72, population: 353679, ratio: "1:176,840" },
-      { name: "Balanga", coverage: 85, population: 170918, ratio: "1:7,431" },
-      { name: "Billiri", coverage: 78, population: 159885, ratio: "1:17,765" },
-      { name: "Dukku", coverage: 65, population: 207117, ratio: "1:51,779" },
-      { name: "Funakaye", coverage: 70, population: 246646, ratio: "1:30,831" },
-      { name: "Kaltungo", coverage: 82, population: 149805, ratio: "1:13,619" },
-      { name: "Kwami", coverage: 68, population: 159442, ratio: "1:31,888" },
-      { name: "Nafada", coverage: 75, population: 138185, ratio: "1:17,273" },
-      { name: "Shomgom", coverage: 72, population: 137254, ratio: "1:17,157" },
-      { name: "Yamaltu Deba", coverage: 80, population: 240922, ratio: "1:26,769" },
+      { name: "Gombe", population: 268536, ambulances: 12, ratio: "1:22,378" },
+      { name: "Akko", population: 353679, ambulances: 10, ratio: "1:35,368" },
+      { name: "Balanga", population: 170918, ambulances: 6, ratio: "1:28,486" },
+      { name: "Kwami", population: 159442, ambulances: 4, ratio: "1:39,861" },
+      { name: "Kaltungo", population: 149805, ambulances: 4, ratio: "1:37,451" },
+      { name: "Yamaltu Deba", population: 240922, ambulances: 3, ratio: "1:80,307" },
+      { name: "Billiri", population: 159885, ambulances: 2, ratio: "1:79,943" },
+      { name: "Dukku", population: 207117, ambulances: 2, ratio: "1:103,559" },
+      { name: "Funakaye", population: 246646, ambulances: 2, ratio: "1:123,323" },
+      { name: "Nafada", population: 138185, ambulances: 1, ratio: "1:138,185" },
+      { name: "Shongom", population: 137254, ambulances: 1, ratio: "1:137,254" },
     ],
   },
   trends: {
     monthly: [
-      { month: "Jan", emergencies: 98, responses: 95 },
-      { month: "Feb", emergencies: 112, responses: 108 },
-      { month: "Mar", emergencies: 125, responses: 122 },
-      { month: "Apr", emergencies: 118, responses: 115 },
-      { month: "May", emergencies: 134, responses: 130 },
-      { month: "Jun", emergencies: 142, responses: 139 },
-      { month: "Jul", emergencies: 156, responses: 152 },
-      { month: "Aug", emergencies: 148, responses: 145 },
-      { month: "Sep", emergencies: 138, responses: 135 },
-      { month: "Oct", emergencies: 129, responses: 126 },
-      { month: "Nov", emergencies: 121, responses: 118 },
-      { month: "Dec", emergencies: 126, responses: 123 },
+      { month: "Jun", emergencies: 151, deliveries: 127 },
+      { month: "Jul", emergencies: 364, deliveries: 232 },
+      { month: "Aug", emergencies: 147, deliveries: 119 },
+      { month: "Sep", emergencies: 128, deliveries: 100 },
+      { month: "Oct", emergencies: 97, deliveries: 69 },
+      { month: "Nov", emergencies: 0, deliveries: 0 },
     ],
   },
   lastUpdated: new Date().toISOString(),

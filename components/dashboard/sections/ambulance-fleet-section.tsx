@@ -3,90 +3,94 @@
 import { SectionPanel } from "../section-panel"
 import { AnimatedNumber } from "../animated-number"
 import { AmbulanceIcon } from "../visual-icons"
-import { Ambulance, CheckCircle2, Clock, Wrench } from "lucide-react"
+import { Ambulance } from "lucide-react"
 import type { DashboardData } from "@/lib/dashboard-data"
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from "recharts"
 
 interface AmbulanceFleetSectionProps {
   data: DashboardData["ambulanceFleet"]
 }
 
 export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
-  const available = data.byLocation.filter((l) => l.status === "available").length
-  const onRoute = data.byLocation.filter((l) => l.status === "on-route").length
-  const maintenance = data.byLocation.filter((l) => l.status === "maintenance").length
+  const chartData = data.byLGA.map((lga) => ({
+    name: lga.shortName,
+    fullName: lga.name,
+    count: lga.count,
+  }))
 
-  const statusData = [
-    { name: "Ready to Go", value: available, color: "#00A86B", icon: CheckCircle2 },
-    { name: "On the Road", value: onRoute, color: "#FFB81C", icon: Clock },
-    { name: "Being Fixed", value: maintenance, color: "#DC143C", icon: Wrench },
-  ]
-
-  const total = available + onRoute + maintenance
+  // Color based on count
+  const getBarColor = (count: number) => {
+    if (count >= 10) return "#00A86B"
+    if (count >= 4) return "#FFB81C"
+    return "#DC143C"
+  }
 
   return (
     <SectionPanel
       title="Ambulance Fleet"
-      subtitle="Our emergency vehicles"
+      subtitle="Vehicles across all LGAs"
       icon={Ambulance}
       illustration={<AmbulanceIcon className="w-full h-28" />}
     >
-      <div className="flex items-center justify-center gap-8 h-full">
-        {/* Large visual donut */}
-        <div className="relative w-72 h-72">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={statusData}
-                cx="50%"
-                cy="50%"
-                innerRadius={70}
-                outerRadius={110}
-                paddingAngle={3}
-                dataKey="value"
-                animationDuration={1200}
-              >
-                {statusData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-          {/* Center content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <Ambulance className="w-10 h-10 text-[#0052A5] mb-1" />
-            <p className="text-5xl font-bold text-gray-900">
-              <AnimatedNumber value={data.total} />
-            </p>
-            <p className="text-sm text-gray-500 font-medium">Total</p>
+      <div className="flex flex-col h-full gap-4">
+        {/* Total ambulances */}
+        <div className="flex justify-center">
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-blue-50 border-2 border-[#0052A5]">
+            <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-[#0052A5]">
+              <Ambulance className="w-7 h-7 text-white" />
+            </div>
+            <div>
+              <p className="text-4xl font-bold text-[#0052A5]">
+                <AnimatedNumber value={data.total} />
+              </p>
+              <p className="text-sm text-gray-600">Total Ambulances in Gombe State</p>
+            </div>
           </div>
         </div>
 
-        {/* Visual legend with icons */}
-        <div className="space-y-4 w-56">
-          {statusData.map((item) => {
-            const IconComponent = item.icon
-            return (
-              <div
-                key={item.name}
-                className="flex items-center gap-4 p-4 rounded-xl"
-                style={{ backgroundColor: `${item.color}15` }}
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: item.color }}
-                >
-                  <IconComponent className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm text-gray-600">{item.name}</p>
-                  <p className="text-2xl font-bold" style={{ color: item.color }}>
-                    {item.value}
-                  </p>
-                </div>
-              </div>
-            )
-          })}
+        {/* Bar chart showing ambulances per LGA */}
+        <div className="flex-1 bg-gray-50 rounded-xl p-4">
+          <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2 text-center">
+            Ambulances by Local Government Area
+          </p>
+          <div className="h-52">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={chartData} margin={{ left: -15, right: 10, bottom: 5 }}>
+                <XAxis
+                  dataKey="name"
+                  tick={{ fontSize: 10, fill: "#6B7280" }}
+                  axisLine={false}
+                  tickLine={false}
+                  interval={0}
+                  angle={-45}
+                  textAnchor="end"
+                  height={50}
+                />
+                <YAxis tick={{ fontSize: 10, fill: "#6B7280" }} axisLine={false} tickLine={false} />
+                <Bar dataKey="count" radius={[4, 4, 0, 0]} animationDuration={1200}>
+                  {chartData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={getBarColor(entry.count)} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div className="flex justify-center gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded bg-[#00A86B]" />
+            <span className="text-xs text-gray-600">10+ ambulances</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded bg-[#FFB81C]" />
+            <span className="text-xs text-gray-600">4-9 ambulances</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded bg-[#DC143C]" />
+            <span className="text-xs text-gray-600">1-3 ambulances</span>
+          </div>
         </div>
       </div>
     </SectionPanel>
