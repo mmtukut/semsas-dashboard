@@ -2,8 +2,7 @@
 
 import { SectionPanel } from "../section-panel"
 import { AnimatedNumber } from "../animated-number"
-import { GombeMap } from "../gombe-map"
-import { MapPinned, Users, Target } from "lucide-react"
+import { MapPinned, Users, Ambulance } from "lucide-react"
 import type { DashboardData } from "@/lib/dashboard-data"
 
 interface CensusSectionProps {
@@ -11,13 +10,13 @@ interface CensusSectionProps {
 }
 
 export function CensusSection({ data }: CensusSectionProps) {
-  const totalPopulation = data.byLGA.reduce((sum, lga) => sum + lga.population, 0)
-  const avgCoverage = Math.round(data.byLGA.reduce((sum, lga) => sum + lga.coverage, 0) / data.byLGA.length)
+  const totalAmbulances = data.byLGA.reduce((sum, lga) => sum + lga.ambulances, 0)
+  const avgAmbulancesPerLGA = Math.round(totalAmbulances / data.byLGA.length)
 
   return (
     <SectionPanel
       title="Where We Serve"
-      subtitle="Coverage across Gombe State"
+      subtitle="Ambulances across Gombe State"
       icon={MapPinned}
       illustration={
         <div className="text-center">
@@ -31,50 +30,46 @@ export function CensusSection({ data }: CensusSectionProps) {
         <div className="flex justify-center gap-8">
           <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-50">
             <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#0052A5]">
-              <Users className="w-6 h-6 text-white" />
+              <Ambulance className="w-6 h-6 text-white" />
             </div>
             <div>
               <p className="text-2xl font-bold text-[#0052A5]">
-                <AnimatedNumber value={Math.round((totalPopulation / 1000000) * 10) / 10} suffix="M" decimals={1} />
+                <AnimatedNumber value={totalAmbulances} />
               </p>
-              <p className="text-xs text-gray-500">People We Serve</p>
+              <p className="text-xs text-gray-500">Total Ambulances</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50">
             <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#00A86B]">
-              <Target className="w-6 h-6 text-white" />
+              <Users className="w-6 h-6 text-white" />
             </div>
             <div>
               <p className="text-2xl font-bold text-[#00A86B]">
-                <AnimatedNumber value={avgCoverage} suffix="%" />
+                <AnimatedNumber value={avgAmbulancesPerLGA} />
               </p>
-              <p className="text-xs text-gray-500">Avg Coverage</p>
+              <p className="text-xs text-gray-500">Avg per LGA</p>
             </div>
           </div>
         </div>
 
-        {/* Interactive Map */}
-        <div className="flex-1 min-h-[280px]">
-          <GombeMap data={data.byLGA} />
-        </div>
-
-        {/* Legend */}
-        <div className="flex justify-center gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-[#00A86B]" />
-            <span className="text-xs text-gray-600">85%+ coverage</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-[#FFB81C]" />
-            <span className="text-xs text-gray-600">75-84%</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-[#F97316]" />
-            <span className="text-xs text-gray-600">65-74%</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-[#DC143C]" />
-            <span className="text-xs text-gray-600">Below 65%</span>
+        {/* LGA Table */}
+        <div className="flex-1 bg-gray-50 rounded-xl p-4 overflow-auto">
+          <div className="grid grid-cols-2 gap-3">
+            {data.byLGA.map((lga) => (
+              <div
+                key={lga.name}
+                className="bg-white rounded-lg p-3 border border-gray-200 flex items-center justify-between"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">{lga.name}</p>
+                  <p className="text-xs text-gray-500">LGA</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-xl font-bold text-[#0052A5]">{lga.ambulances}</p>
+                  <p className="text-xs text-gray-500">ambulances</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

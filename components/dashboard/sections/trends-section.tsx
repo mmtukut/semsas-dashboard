@@ -11,35 +11,34 @@ interface TrendsSectionProps {
 }
 
 export function TrendsSection({ data }: TrendsSectionProps) {
-  const totalEmergencies = data.monthly.reduce((sum, m) => sum + m.emergencies, 0)
-  const totalResponses = data.monthly.reduce((sum, m) => sum + m.responses, 0)
+  const totalDeliveries = data.monthly.reduce((sum, m) => sum + m.deliveries, 0)
 
   return (
     <SectionPanel
-      title="Year at a Glance"
-      subtitle="How we did all year"
+      title="Deliveries Over Time"
+      subtitle="Monthly births we helped with"
       icon={TrendingUp}
       illustration={<TrendUpIcon className="w-full h-28" />}
     >
       <div className="flex flex-col justify-center h-full gap-6">
         {/* Summary */}
         <div className="flex justify-center gap-8">
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-red-50">
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#DC143C]">
-              <AlertCircle className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-[#DC143C]">{totalEmergencies.toLocaleString()}</p>
-              <p className="text-xs text-gray-500">Total Emergencies</p>
-            </div>
-          </div>
           <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50">
             <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#00A86B]">
               <CheckCircle2 className="w-6 h-6 text-white" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#00A86B]">{totalResponses.toLocaleString()}</p>
-              <p className="text-xs text-gray-500">We Responded</p>
+              <p className="text-2xl font-bold text-[#00A86B]">{totalDeliveries.toLocaleString()}</p>
+              <p className="text-xs text-gray-500">Total Deliveries (Jun-Nov)</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-50">
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#0052A5]">
+              <AlertCircle className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-[#0052A5]">{Math.round(totalDeliveries / data.monthly.length)}</p>
+              <p className="text-xs text-gray-500">Average per Month</p>
             </div>
           </div>
         </div>
@@ -65,18 +64,8 @@ export function TrendsSection({ data }: TrendsSectionProps) {
                 />
                 <Line
                   type="monotone"
-                  dataKey="emergencies"
-                  name="Emergencies"
-                  stroke="#DC143C"
-                  strokeWidth={3}
-                  dot={{ fill: "#DC143C", r: 4 }}
-                  activeDot={{ r: 6 }}
-                  animationDuration={1200}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="responses"
-                  name="We Responded"
+                  dataKey="deliveries"
+                  name="Deliveries"
                   stroke="#00A86B"
                   strokeWidth={3}
                   dot={{ fill: "#00A86B", r: 4 }}

@@ -15,7 +15,7 @@ export function TransportSection({ data }: TransportSectionProps) {
   const summaryData = [
     { name: "Safe Deliveries", value: data.totalDeliveries, color: "#00A86B", icon: Baby },
     { name: "Other Emergencies", value: data.totalOtherEmergencies, color: "#FFB81C", icon: AlertTriangle },
-    { name: "Road Accidents (RESMAT)", value: data.resmatCases, color: "#DC143C", icon: Car },
+    { name: "Total (RESMAT)", value: data.resmatCases, color: "#DC143C", icon: Car },
   ]
 
   return (
@@ -97,8 +97,7 @@ export function TransportSection({ data }: TransportSectionProps) {
         {/* RESMAT explanation */}
         <div className="p-3 bg-red-50 rounded-lg border border-red-200">
           <p className="text-xs text-gray-600">
-            <strong className="text-[#DC143C]">RESMAT</strong> = Road Emergency Services Medical Assistance Team -
-            handles road traffic accident cases
+            <strong className="text-[#DC143C]">RESMAT</strong> = Rural Emergency Services and Maternal Transport
           </p>
         </div>
       </div>

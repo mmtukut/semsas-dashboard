@@ -32,7 +32,7 @@ export interface DashboardData {
   transport: {
     totalDeliveries: number
     totalOtherEmergencies: number
-    resmatCases: number // Road Traffic Accidents
+    resmatCases: number 
     monthlyData: { month: string; total: number; deliveries: number; otherEmergencies: number }[]
   }
   emergencyTypes: {
@@ -113,7 +113,7 @@ export const defaultDashboardData: DashboardData = {
   transport: {
     totalDeliveries: 647, // 127+232+119+100+69
     totalOtherEmergencies: 184, // 24+82+28+28+22
-    resmatCases: 887, // Road Traffic Accidents
+    resmatCases: 887, // 
     monthlyData: [
       { month: "June", total: 151, deliveries: 127, otherEmergencies: 24 },
       { month: "July", total: 364, deliveries: 232, otherEmergencies: 82 },
