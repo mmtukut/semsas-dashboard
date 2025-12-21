@@ -50,25 +50,24 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
         </div>
       }
     >
-      <div className="grid grid-cols-2 gap-8 h-full p-8">
+      <div className="grid grid-cols-2 gap-6 h-full p-4">
         {/* Labor Complications Section */}
         <div className="flex flex-col items-center">
-          <div className="mb-4 text-center">
-            <h3 className="text-2xl font-bold text-[#DC143C] mb-1">Labor Complications</h3>
-            <p className="text-3xl font-bold text-gray-800">{laborTotal.toLocaleString()}</p>
-            <p className="text-sm text-gray-500">{Math.round((laborTotal / grandTotal) * 100)}% of all emergencies</p>
+          <div className="mb-3 text-center">
+            <h3 className="text-xl font-bold text-[#DC143C] mb-1">Labor Complications</h3>
+            <p className="text-2xl font-bold text-gray-800">{laborTotal.toLocaleString()}</p>
+            <p className="text-xs text-gray-500">{Math.round((laborTotal / grandTotal) * 100)}% of emergencies</p>
           </div>
 
-          {/* Donut Chart for Labor */}
-          <div className="relative w-56 h-56 mb-4">
+          <div className="relative w-48 h-48 mb-3">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={laborChartData}
                   cx="50%"
                   cy="50%"
-                  innerRadius={50}
-                  outerRadius={85}
+                  innerRadius={45}
+                  outerRadius={75}
                   paddingAngle={2}
                   dataKey="count"
                   animationDuration={1200}
@@ -81,23 +80,22 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
             </ResponsiveContainer>
           </div>
 
-          {/* Legend for Labor */}
-          <div className="space-y-2 w-full">
+          <div className="space-y-1.5 w-full max-w-[280px]">
             {laborChartData.map((item) => {
               const IconComponent = emergencyIcons[item.name] || TraumaIcon
 
               return (
                 <div
                   key={item.name}
-                  className="flex items-center gap-2 p-2 rounded-lg"
-                  style={{ backgroundColor: `${item.color}10`, borderLeft: `4px solid ${item.color}` }}
+                  className="flex items-center gap-2 p-1.5 rounded-lg"
+                  style={{ backgroundColor: `${item.color}10`, borderLeft: `3px solid ${item.color}` }}
                 >
-                  <IconComponent className="w-8 h-8 flex-shrink-0" />
+                  <IconComponent className="w-6 h-6 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-gray-700 truncate">{item.name}</p>
-                    <p className="text-xs text-gray-500">{item.count.toLocaleString()} cases</p>
+                    <p className="text-[11px] font-medium text-gray-700 truncate leading-tight">{item.name}</p>
+                    <p className="text-[10px] text-gray-500">{item.count.toLocaleString()} cases</p>
                   </div>
-                  <p className="text-lg font-bold flex-shrink-0" style={{ color: item.color }}>
+                  <p className="text-base font-bold flex-shrink-0" style={{ color: item.color }}>
                     {item.percentage}%
                   </p>
                 </div>
@@ -107,25 +105,22 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
         </div>
 
         {/* Pregnancy Complications Section */}
-        <div className="flex flex-col items-center border-l-2 border-gray-200 pl-8">
-          <div className="mb-4 text-center">
-            <h3 className="text-2xl font-bold text-[#0052A5] mb-1">Pregnancy Complications</h3>
-            <p className="text-3xl font-bold text-gray-800">{pregnancyTotal.toLocaleString()}</p>
-            <p className="text-sm text-gray-500">
-              {Math.round((pregnancyTotal / grandTotal) * 100)}% of all emergencies
-            </p>
+        <div className="flex flex-col items-center border-l-2 border-gray-200 pl-6">
+          <div className="mb-3 text-center">
+            <h3 className="text-xl font-bold text-[#0052A5] mb-1">Pregnancy Complications</h3>
+            <p className="text-2xl font-bold text-gray-800">{pregnancyTotal.toLocaleString()}</p>
+            <p className="text-xs text-gray-500">{Math.round((pregnancyTotal / grandTotal) * 100)}% of emergencies</p>
           </div>
 
-          {/* Donut Chart for Pregnancy */}
-          <div className="relative w-56 h-56 mb-4">
+          <div className="relative w-48 h-48 mb-3">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={pregnancyChartData}
                   cx="50%"
                   cy="50%"
-                  innerRadius={50}
-                  outerRadius={85}
+                  innerRadius={45}
+                  outerRadius={75}
                   paddingAngle={2}
                   dataKey="count"
                   animationDuration={1200}
@@ -138,23 +133,22 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
             </ResponsiveContainer>
           </div>
 
-          {/* Legend for Pregnancy */}
-          <div className="space-y-2 w-full">
+          <div className="space-y-1.5 w-full max-w-[280px]">
             {pregnancyChartData.map((item) => {
               const IconComponent = emergencyIcons[item.name] || TraumaIcon
 
               return (
                 <div
                   key={item.name}
-                  className="flex items-center gap-2 p-2 rounded-lg"
-                  style={{ backgroundColor: `${item.color}10`, borderLeft: `4px solid ${item.color}` }}
+                  className="flex items-center gap-2 p-1.5 rounded-lg"
+                  style={{ backgroundColor: `${item.color}10`, borderLeft: `3px solid ${item.color}` }}
                 >
-                  <IconComponent className="w-8 h-8 flex-shrink-0" />
+                  <IconComponent className="w-6 h-6 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-gray-700 truncate">{item.name}</p>
-                    <p className="text-xs text-gray-500">{item.count.toLocaleString()} cases</p>
+                    <p className="text-[11px] font-medium text-gray-700 truncate leading-tight">{item.name}</p>
+                    <p className="text-[10px] text-gray-500">{item.count.toLocaleString()} cases</p>
                   </div>
-                  <p className="text-lg font-bold flex-shrink-0" style={{ color: item.color }}>
+                  <p className="text-base font-bold flex-shrink-0" style={{ color: item.color }}>
                     {item.percentage}%
                   </p>
                 </div>
