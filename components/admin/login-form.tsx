@@ -54,7 +54,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
             <div className="space-y-2">
               <Label htmlFor="username">Username</Label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
                 <Input
                   id="username"
                   placeholder="Enter username"
@@ -68,7 +68,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
                 <Input
                   id="password"
                   type="password"
@@ -91,7 +91,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
 
-            <p className="text-xs text-center text-muted-foreground">Demo credentials: admin / semsas2025</p>
+            <p className="text-xs text-center text-black">Demo credentials: admin / semsas2025</p>
           </form>
         </CardContent>
       </Card>

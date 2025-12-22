@@ -49,7 +49,7 @@ export function KPICard({ title, value, suffix, prefix, trend, icon: Icon, color
                 ? "bg-[#00A86B]/10 text-[#00A86B]"
                 : trend < 0
                   ? "bg-[#DC143C]/10 text-[#DC143C]"
-                  : "bg-gray-100 text-black",
+                  : "bg-black/5 text-black",
             )}
           >
             {trend > 0 ? (

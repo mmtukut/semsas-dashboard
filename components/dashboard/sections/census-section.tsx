@@ -53,12 +53,12 @@ export function CensusSection({ data }: CensusSectionProps) {
         </div>
 
         {/* LGA Table */}
-        <div className="flex-1 bg-gray-50 rounded-xl p-4 overflow-auto">
+        <div className="flex-1 bg-black/5 rounded-xl p-4 overflow-auto">
           <div className="grid grid-cols-2 gap-3">
             {data.byLGA.map((lga) => (
               <div
                 key={lga.name}
-                className="bg-white rounded-lg p-3 border border-gray-200 flex items-center justify-between"
+                className="bg-white rounded-lg p-3 border border-black/20 flex items-center justify-between"
               >
                 <div>
                   <p className="text-sm font-semibold text-black">{lga.name}</p>

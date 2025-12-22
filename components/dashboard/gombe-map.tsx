@@ -103,7 +103,7 @@ export function GombeMap({ data, highlightLGA }: GombeMapProps) {
 
       {/* Hover tooltip */}
       {hoveredLGA && (
-        <div className="absolute top-2 right-2 bg-white rounded-lg shadow-lg p-3 border border-gray-200 z-10">
+        <div className="absolute top-2 right-2 bg-white rounded-lg shadow-lg p-3 border border-black z-10">
           <p className="font-bold text-black text-sm">{hoveredLGA}</p>
           <p className="text-xs text-black">Coverage: {getLGACoverage(hoveredLGA)}%</p>
           <p className="text-xs text-black">

@@ -42,7 +42,7 @@ export function SectionPanel({ title, subtitle, icon: Icon, children, illustrati
           <div className="w-12 h-1 bg-[#FFB81C] rounded-full" />
 
           {/* Decorative bottom gradient */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/5 to-transparent" />
         </div>
       </div>
 

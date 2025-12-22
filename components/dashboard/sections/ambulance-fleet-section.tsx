@@ -50,7 +50,7 @@ export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
         </div>
 
         {/* Bar chart showing ambulances per LGA */}
-        <div className="flex-1 bg-gray-50 rounded-xl p-4">
+        <div className="flex-1 bg-black/5 rounded-xl p-4">
           <p className="text-xs text-black uppercase tracking-wide font-semibold mb-2 text-center">
             Ambulances by Local Government Area
           </p>
@@ -59,7 +59,7 @@ export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
               <BarChart data={chartData} margin={{ left: -15, right: 10, bottom: 5 }}>
                 <XAxis
                   dataKey="name"
-                  tick={{ fontSize: 10, fill: "#6B7280" }}
+                  tick={{ fontSize: 10, fill: "#000000" }}
                   axisLine={false}
                   tickLine={false}
                   interval={0}
@@ -67,7 +67,7 @@ export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
                   textAnchor="end"
                   height={50}
                 />
-                <YAxis tick={{ fontSize: 10, fill: "#6B7280" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 10, fill: "#000000" }} axisLine={false} tickLine={false} />
                 <Bar dataKey="count" radius={[4, 4, 0, 0]} animationDuration={1200}>
                   {chartData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={getBarColor(entry.count)} />

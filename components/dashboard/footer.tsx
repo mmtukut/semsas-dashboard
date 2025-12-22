@@ -34,7 +34,7 @@ export function DashboardFooter({ currentSection, totalSections, onSectionClick 
                 key={index}
                 onClick={() => onSectionClick(index)}
                 className={`transition-all duration-300 rounded-full ${
-                  index === currentSection ? "w-6 h-2 bg-[#0052A5]" : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
+                  index === currentSection ? "w-6 h-2 bg-[#0052A5]" : "w-2 h-2 bg-black hover:bg-black"
                 }`}
               />
             ))}

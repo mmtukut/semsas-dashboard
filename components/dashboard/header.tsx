@@ -28,7 +28,7 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
             </div>
 
             {/* Federal Ministry of Health */}
-            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-gray-200">
+            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-black">
               <Image
                 src="/images/fmoh-logo.png"
                 alt="Federal Ministry of Health"
@@ -47,7 +47,7 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
             </div>
 
             {/* Gombe State Ministry of Health */}
-            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-gray-200">
+            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-black">
               <Image
                 src="/images/moh-gombe-logo.jpeg"
                 alt="Gombe State Ministry of Health"
@@ -58,7 +58,7 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
             </div>
 
             {/* World Bank */}
-            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-gray-200">
+            <div className="w-14 h-14 rounded-full overflow-hidden bg-white flex items-center justify-center border border-black">
               <Image
                 src="/images/worldbank-logo.jpeg"
                 alt="World Bank"
@@ -73,13 +73,13 @@ export function DashboardHeader({ isPlaying, onPlayPause }: DashboardHeaderProps
           <div className="flex items-center gap-3">
             <button
               onClick={onPlayPause}
-              className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center bg-white hover:bg-gray-50 transition-colors"
+              className="w-11 h-11 rounded-full border border-black flex items-center justify-center bg-white hover:bg-white transition-colors"
             >
               {isPlaying ? <Pause className="w-5 h-5 text-black" /> : <Play className="w-5 h-5 text-black ml-0.5" />}
             </button>
             <Link
               href="/admin"
-              className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center bg-white hover:bg-gray-50 transition-colors"
+              className="w-11 h-11 rounded-full border border-black flex items-center justify-center bg-white hover:bg-white transition-colors"
             >
               <Settings className="w-5 h-5 text-black" />
             </Link>
