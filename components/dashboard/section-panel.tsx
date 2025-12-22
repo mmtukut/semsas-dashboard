@@ -30,10 +30,10 @@ export function SectionPanel({ title, subtitle, icon: Icon, children, illustrati
           )}
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-2 text-balance">{title}</h2>
+          <h2 className="text-2xl font-bold text-black text-center mb-2 text-balance">{title}</h2>
 
           {/* Subtitle */}
-          {subtitle && <p className="text-sm text-gray-500 text-center mb-3">{subtitle}</p>}
+          {subtitle && <p className="text-sm text-black text-center mb-3">{subtitle}</p>}
 
           {/* Underline accent */}
           <div className="w-12 h-1 bg-[#FFB81C] rounded-full" />

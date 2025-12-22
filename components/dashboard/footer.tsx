@@ -23,8 +23,8 @@ export function DashboardFooter({ currentSection, totalSections, onSectionClick 
           {/* Emergency Hotline */}
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-[#DC143C]" />
-            <span className="text-xs text-gray-500 uppercase tracking-wide">Emergency Hotline:</span>
-            <span className="text-sm font-bold text-gray-900">112</span>
+            <span className="text-xs text-black uppercase tracking-wide">Emergency Hotline:</span>
+            <span className="text-sm font-bold text-black">112</span>
           </div>
 
           {/* Navigation Dots */}
@@ -44,9 +44,9 @@ export function DashboardFooter({ currentSection, totalSections, onSectionClick 
           <div className="flex items-center gap-4 text-xs">
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-[#00A86B] animate-pulse" />
-              <span className="text-gray-500">SYSTEM OPERATIONAL</span>
+              <span className="text-black">SYSTEM OPERATIONAL</span>
             </div>
-            <span className="text-gray-400">Last Updated: {currentTime}</span>
+            <span className="text-black">Last Updated: {currentTime}</span>
           </div>
         </div>
       </div>

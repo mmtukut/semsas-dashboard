@@ -70,7 +70,7 @@ export function OverviewSection({ data }: OverviewSectionProps) {
                   <p className="text-4xl font-bold" style={{ color: stat.color }}>
                     <AnimatedNumber value={stat.value} />
                   </p>
-                  <p className="text-sm text-gray-600 font-medium">{stat.label}</p>
+                  <p className="text-sm text-black font-medium">{stat.label}</p>
                 </div>
               </div>
             )

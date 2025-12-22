@@ -43,14 +43,14 @@ export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
               <p className="text-4xl font-bold text-[#0052A5]">
                 <AnimatedNumber value={data.total} />
               </p>
-              <p className="text-sm text-gray-600">Total Ambulances in Gombe State</p>
+              <p className="text-sm text-black">Total Ambulances in Gombe State</p>
             </div>
           </div>
         </div>
 
         {/* Bar chart showing ambulances per LGA */}
         <div className="flex-1 bg-gray-50 rounded-xl p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2 text-center">
+          <p className="text-xs text-black uppercase tracking-wide font-semibold mb-2 text-center">
             Ambulances by Local Government Area
           </p>
           <div className="h-52">
@@ -81,15 +81,15 @@ export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
         <div className="flex justify-center gap-6">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded bg-[#00A86B]" />
-            <span className="text-xs text-gray-600">10+ ambulances</span>
+            <span className="text-xs text-black">10+ ambulances</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded bg-[#FFB81C]" />
-            <span className="text-xs text-gray-600">4-9 ambulances</span>
+            <span className="text-xs text-black">4-9 ambulances</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded bg-[#DC143C]" />
-            <span className="text-xs text-gray-600">1-3 ambulances</span>
+            <span className="text-xs text-black">1-3 ambulances</span>
           </div>
         </div>
       </div>

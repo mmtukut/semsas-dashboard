@@ -48,10 +48,10 @@ export function StaffSection({ data }: StaffSectionProps) {
           {/* Center content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <Users className="w-8 h-8 text-[#0052A5] mb-1" />
-            <p className="text-4xl font-bold text-gray-900">
+            <p className="text-4xl font-bold text-black">
               <AnimatedNumber value={data.totalPersonnel} />
             </p>
-            <p className="text-xs text-gray-500">Total Team</p>
+            <p className="text-xs text-black">Total Team</p>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export function StaffSection({ data }: StaffSectionProps) {
                   <IconComponent className="w-7 h-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm text-gray-600">{item.name}</p>
+                  <p className="text-sm text-black">{item.name}</p>
                   <p className="text-3xl font-bold" style={{ color: item.color }}>
                     <AnimatedNumber value={item.value} />
                   </p>
@@ -83,7 +83,7 @@ export function StaffSection({ data }: StaffSectionProps) {
 
           {/* Explanation */}
           <div className="p-3 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-500 leading-relaxed">
+            <p className="text-xs text-black leading-relaxed">
               <strong>CEMTORS</strong> = Community Emergency Transport Organizers who coordinate emergency transport at
               community level
             </p>

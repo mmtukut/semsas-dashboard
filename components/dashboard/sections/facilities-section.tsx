@@ -50,10 +50,10 @@ export function FacilitiesSection({ data }: FacilitiesSectionProps) {
           {/* Center content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <Building2 className="w-8 h-8 text-[#0052A5] mb-1" />
-            <p className="text-4xl font-bold text-gray-900">
+            <p className="text-4xl font-bold text-black">
               <AnimatedNumber value={total} />
             </p>
-            <p className="text-xs text-gray-500">Total Facilities</p>
+            <p className="text-xs text-black">Total Facilities</p>
           </div>
         </div>
 
@@ -78,8 +78,8 @@ export function FacilitiesSection({ data }: FacilitiesSectionProps) {
                     <IconComponent className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-700">{item.name}</p>
-                    <p className="text-xs text-gray-500">{item.desc}</p>
+                    <p className="text-sm font-medium text-black">{item.name}</p>
+                    <p className="text-xs text-black">{item.desc}</p>
                   </div>
                 </div>
                 <p className="text-3xl font-bold ml-13" style={{ color: item.color }}>
