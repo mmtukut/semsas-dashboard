@@ -13,8 +13,8 @@ interface FacilitiesSectionProps {
 
 export function FacilitiesSection({ data }: FacilitiesSectionProps) {
   const pieData = [
-    { name: "REMOnic Centers", value: data.remonic, color: "#0052A5", icon: Hospital, desc: "Emergency Care" },
-    { name: "CEmone Facilities", value: data.cemone, color: "#00A86B", icon: Stethoscope, desc: "Basic Care" },
+    { name: "MAMII Health Facilities", value: data.remonic, color: "#0052A5", icon: Hospital, desc: "Emergency Care" },
+    { name: "CEmoNC Health Facilities", value: data.cemone, color: "#00A86B", icon: Stethoscope, desc: "Basic Care" },
   ]
 
   const total = data.remonic + data.cemone

@@ -15,7 +15,7 @@ import { CensusSection } from "@/components/dashboard/sections/census-section"
 import { TrendsSection } from "@/components/dashboard/sections/trends-section"
 import { defaultDashboardData } from "@/lib/dashboard-data"
 
-const SECTION_DURATION = 6000 // 6 seconds per section
+const SECTION_DURATION = 48000 // 48 seconds per section
 
 const sectionNames = [
   "Overview",

@@ -56,7 +56,7 @@ export function TransportSection({ data }: TransportSectionProps) {
         {/* Monthly breakdown chart */}
         <div className="flex-1 bg-gray-50 rounded-xl p-4">
           <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2 text-center">
-            Monthly Labor & Delivery Cases (June - November 2024)
+            Monthly Labor & Delivery Cases (June - November 2025)
           </p>
           <div className="h-44">
             <ResponsiveContainer width="100%" height="100%">

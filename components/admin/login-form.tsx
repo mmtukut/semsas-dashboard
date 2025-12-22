@@ -15,7 +15,7 @@ interface LoginFormProps {
 
 // Demo credentials - in production, use proper authentication
 const DEMO_USERNAME = "admin"
-const DEMO_PASSWORD = "nemsas2024"
+const DEMO_PASSWORD = "semsas2025"
 
 export function LoginForm({ onLogin }: LoginFormProps) {
   const [username, setUsername] = useState("")
@@ -34,7 +34,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
     if (username === DEMO_USERNAME && password === DEMO_PASSWORD) {
       onLogin()
     } else {
-      setError("Invalid credentials. Use admin / nemsas2024")
+      setError("Invalid credentials. Use admin / semsas2025")
     }
     setIsLoading(false)
   }
@@ -91,7 +91,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
 
-            <p className="text-xs text-center text-muted-foreground">Demo credentials: admin / nemsas2024</p>
+            <p className="text-xs text-center text-muted-foreground">Demo credentials: admin / semsas2025</p>
           </form>
         </CardContent>
       </Card>

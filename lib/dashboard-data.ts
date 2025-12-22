@@ -32,7 +32,7 @@ export interface DashboardData {
   transport: {
     totalDeliveries: number
     totalOtherEmergencies: number
-    resmatCases: number 
+    resmatCases: number
     monthlyData: { month: string; total: number; deliveries: number; otherEmergencies: number }[]
   }
   emergencyTypes: {
@@ -86,13 +86,13 @@ export const defaultDashboardData: DashboardData = {
     totalPersonnel: 662, // CEMTORS + Volunteer Drivers
   },
   facilities: {
-    remonic: 12,
-    cemone: 28,
+    remonic: 83, // MAMII Health Facilities
+    cemone: 28, // CEmoNC Health Facilities
     distribution: [
-      { area: "Gombe Central", remonic: 4, cemone: 8 },
-      { area: "Gombe North", remonic: 3, cemone: 7 },
-      { area: "Gombe South", remonic: 3, cemone: 7 },
-      { area: "Gombe East", remonic: 2, cemone: 6 },
+      { area: "Gombe Central", remonic: 28, cemone: 8 },
+      { area: "Gombe North", remonic: 20, cemone: 7 },
+      { area: "Gombe South", remonic: 20, cemone: 7 },
+      { area: "Gombe East", remonic: 15, cemone: 6 },
     ],
   },
   dailyDispatch: {
@@ -113,7 +113,7 @@ export const defaultDashboardData: DashboardData = {
   transport: {
     totalDeliveries: 647, // 127+232+119+100+69
     totalOtherEmergencies: 184, // 24+82+28+28+22
-    resmatCases: 887, // 
+    resmatCases: 887, //
     monthlyData: [
       { month: "June", total: 151, deliveries: 127, otherEmergencies: 24 },
       { month: "July", total: 364, deliveries: 232, otherEmergencies: 82 },
