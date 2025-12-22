@@ -21,7 +21,7 @@ export function CensusSection({ data }: CensusSectionProps) {
       illustration={
         <div className="text-center">
           <MapPinned className="w-16 h-16 text-[#0052A5] mx-auto mb-2" />
-          <p className="text-xs text-gray-500">11 Local Government Areas</p>
+          <p className="text-xs text-black">11 Local Government Areas</p>
         </div>
       }
     >
@@ -29,14 +29,14 @@ export function CensusSection({ data }: CensusSectionProps) {
         {/* Summary stats */}
         <div className="flex justify-center gap-8">
           <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-50">
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#0052A5]">
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#FF0000]">
               <Ambulance className="w-6 h-6 text-white" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#0052A5]">
+              <p className="text-2xl font-bold text-[#FF0000]">
                 <AnimatedNumber value={totalAmbulances} />
               </p>
-              <p className="text-xs text-gray-500">Total Ambulances</p>
+              <p className="text-xs text-black">Total Ambulances</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50">
@@ -47,7 +47,7 @@ export function CensusSection({ data }: CensusSectionProps) {
               <p className="text-2xl font-bold text-[#00A86B]">
                 <AnimatedNumber value={avgAmbulancesPerLGA} />
               </p>
-              <p className="text-xs text-gray-500">Avg per LGA</p>
+              <p className="text-xs text-black">Avg per LGA</p>
             </div>
           </div>
         </div>
@@ -61,12 +61,12 @@ export function CensusSection({ data }: CensusSectionProps) {
                 className="bg-white rounded-lg p-3 border border-gray-200 flex items-center justify-between"
               >
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">{lga.name}</p>
-                  <p className="text-xs text-gray-500">LGA</p>
+                  <p className="text-sm font-semibold text-black">{lga.name}</p>
+                  <p className="text-xs text-black">LGA</p>
                 </div>
                 <div className="text-right">
                   <p className="text-xl font-bold text-[#0052A5]">{lga.ambulances}</p>
-                  <p className="text-xs text-gray-500">ambulances</p>
+                  <p className="text-xs text-black">ambulances</p>
                 </div>
               </div>
             ))}

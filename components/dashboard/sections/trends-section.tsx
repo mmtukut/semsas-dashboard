@@ -29,7 +29,7 @@ export function TrendsSection({ data }: TrendsSectionProps) {
             </div>
             <div>
               <p className="text-2xl font-bold text-[#00A86B]">{totalDeliveries.toLocaleString()}</p>
-              <p className="text-xs text-gray-500">Total Deliveries (Jun-Nov)</p>
+              <p className="text-xs text-black">Total Deliveries (Jun-Nov)</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-50">
@@ -38,7 +38,7 @@ export function TrendsSection({ data }: TrendsSectionProps) {
             </div>
             <div>
               <p className="text-2xl font-bold text-[#0052A5]">{Math.round(totalDeliveries / data.monthly.length)}</p>
-              <p className="text-xs text-gray-500">Average per Month</p>
+              <p className="text-xs text-black">Average per Month</p>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export function TrendsSection({ data }: TrendsSectionProps) {
                 <Legend
                   verticalAlign="top"
                   height={36}
-                  formatter={(value) => <span className="text-xs text-gray-600 font-medium">{value}</span>}
+                  formatter={(value) => <span className="text-xs text-black font-medium">{value}</span>}
                 />
                 <Line
                   type="monotone"

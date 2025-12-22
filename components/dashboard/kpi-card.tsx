@@ -49,7 +49,7 @@ export function KPICard({ title, value, suffix, prefix, trend, icon: Icon, color
                 ? "bg-[#00A86B]/10 text-[#00A86B]"
                 : trend < 0
                   ? "bg-[#DC143C]/10 text-[#DC143C]"
-                  : "bg-gray-100 text-gray-500",
+                  : "bg-gray-100 text-black",
             )}
           >
             {trend > 0 ? (
@@ -67,7 +67,7 @@ export function KPICard({ title, value, suffix, prefix, trend, icon: Icon, color
         <p className="text-3xl font-bold text-[#2C3E50]">
           <AnimatedNumber value={value} prefix={prefix} suffix={suffix} />
         </p>
-        <p className="text-sm text-muted-foreground font-medium">{title}</p>
+        <p className="text-sm text-black font-medium">{title}</p>
       </div>
     </div>
   )

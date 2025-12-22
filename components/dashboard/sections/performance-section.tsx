@@ -71,7 +71,7 @@ export function PerformanceSection({ data }: PerformanceSectionProps) {
                   >
                     <IconComponent className="w-6 h-6 text-white" />
                   </div>
-                  <p className="text-sm font-medium text-gray-700">{metric.label}</p>
+                  <p className="text-sm font-medium text-black">{metric.label}</p>
                 </div>
                 <p className="text-4xl font-bold" style={{ color: metric.color }}>
                   <AnimatedNumber
@@ -80,7 +80,7 @@ export function PerformanceSection({ data }: PerformanceSectionProps) {
                     decimals={metric.suffix === "%" && metric.value % 1 !== 0 ? 1 : 0}
                   />
                 </p>
-                {metric.target && <p className="text-xs text-gray-500 mt-1">{metric.target}</p>}
+                {metric.target && <p className="text-xs text-black mt-1">{metric.target}</p>}
               </div>
             )
           })}

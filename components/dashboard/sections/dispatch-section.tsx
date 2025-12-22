@@ -35,6 +35,7 @@ export function DispatchSection({ data }: DispatchSectionProps) {
       subtitle="Daily dispatch center"
       icon={Phone}
       illustration={<EmergencyCallIcon className="w-full h-28" />}
+      titleColor="#DC143C"
     >
       <div className="flex flex-col justify-center h-full gap-6">
         {/* Stats with icons */}
@@ -56,7 +57,7 @@ export function DispatchSection({ data }: DispatchSectionProps) {
                   <p className="text-4xl font-bold" style={{ color: stat.color }}>
                     <AnimatedNumber value={stat.value} />
                   </p>
-                  <p className="text-sm text-gray-600">{stat.label}</p>
+                  <p className="text-sm text-black">{stat.label}</p>
                 </div>
               </div>
             )
@@ -69,14 +70,14 @@ export function DispatchSection({ data }: DispatchSectionProps) {
             </div>
             <div>
               <p className="text-4xl font-bold text-[#FFB81C]">{data.avgResponseTime}</p>
-              <p className="text-sm text-gray-600">Avg Response</p>
+              <p className="text-sm text-black">Avg Response</p>
             </div>
           </div>
         </div>
 
         {/* Call trend chart */}
         <div className="bg-gray-50 rounded-xl p-4">
-          <p className="text-xs text-gray-500 mb-2 font-medium">Calls Throughout the Day</p>
+          <p className="text-xs text-black mb-2 font-medium">Calls Throughout the Day</p>
           <div className="h-28">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data.trends}>

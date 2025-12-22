@@ -57,7 +57,7 @@ export interface DashboardData {
 
 export const defaultDashboardData: DashboardData = {
   overview: {
-    totalEmergencies: 1774, // Total from monthly data: 151+364+147+128+97 + RESMAT 887
+    totalEmergencies: 1799, // Total from monthly data: 151+364+147+128+97 + RESMAT 887
     totalAmbulances: 46,
     avgResponseTime: "15 mins",
     livesSaved: 647, // Total deliveries: 127+232+119+100+69

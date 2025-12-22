@@ -55,8 +55,8 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
         <div className="flex flex-col items-center">
           <div className="mb-3 text-center">
             <h3 className="text-xl font-bold text-[#DC143C] mb-1">Labor Complications</h3>
-            <p className="text-2xl font-bold text-gray-800">{laborTotal.toLocaleString()}</p>
-            <p className="text-xs text-gray-500">{Math.round((laborTotal / grandTotal) * 100)}% of emergencies</p>
+            <p className="text-2xl font-bold text-black">{laborTotal.toLocaleString()}</p>
+            <p className="text-xs text-black">{Math.round((laborTotal / grandTotal) * 100)}% of emergencies</p>
           </div>
 
           <div className="relative w-48 h-48 mb-3">
@@ -92,8 +92,8 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
                 >
                   <IconComponent className="w-6 h-6 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[11px] font-medium text-gray-700 truncate leading-tight">{item.name}</p>
-                    <p className="text-[10px] text-gray-500">{item.count.toLocaleString()} cases</p>
+                    <p className="text-[11px] font-medium text-black truncate leading-tight">{item.name}</p>
+                    <p className="text-[10px] text-black">{item.count.toLocaleString()} cases</p>
                   </div>
                   <p className="text-base font-bold flex-shrink-0" style={{ color: item.color }}>
                     {item.percentage}%
@@ -108,8 +108,8 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
         <div className="flex flex-col items-center border-l-2 border-gray-200 pl-6">
           <div className="mb-3 text-center">
             <h3 className="text-xl font-bold text-[#0052A5] mb-1">Pregnancy Complications</h3>
-            <p className="text-2xl font-bold text-gray-800">{pregnancyTotal.toLocaleString()}</p>
-            <p className="text-xs text-gray-500">{Math.round((pregnancyTotal / grandTotal) * 100)}% of emergencies</p>
+            <p className="text-2xl font-bold text-black">{pregnancyTotal.toLocaleString()}</p>
+            <p className="text-xs text-black">{Math.round((pregnancyTotal / grandTotal) * 100)}% of emergencies</p>
           </div>
 
           <div className="relative w-48 h-48 mb-3">
@@ -145,8 +145,8 @@ export function EmergencyTypesSection({ data }: EmergencyTypesSectionProps) {
                 >
                   <IconComponent className="w-6 h-6 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[11px] font-medium text-gray-700 truncate leading-tight">{item.name}</p>
-                    <p className="text-[10px] text-gray-500">{item.count.toLocaleString()} cases</p>
+                    <p className="text-[11px] font-medium text-black truncate leading-tight">{item.name}</p>
+                    <p className="text-[10px] text-black">{item.count.toLocaleString()} cases</p>
                   </div>
                   <p className="text-base font-bold flex-shrink-0" style={{ color: item.color }}>
                     {item.percentage}%

@@ -36,8 +36,8 @@ export function OverviewSection({ data }: OverviewSectionProps) {
     {
       label: "Total Ambulances",
       value: data.totalAmbulances,
-      color: "#0052A5",
-      bgColor: "bg-blue-50",
+      color: "#FF0000",
+      bgColor: "bg-red-50",
       icon: Ambulance,
     },
   ]

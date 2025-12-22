@@ -43,7 +43,7 @@ export function PresentationControls({
                     ? "bg-[#0052A5] text-white"
                     : index < currentSection
                       ? "bg-[#00A86B]/20 text-[#00A86B]"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80",
+                      : "bg-muted text-black hover:bg-muted/80",
                 )}
               >
                 {name}
@@ -99,7 +99,7 @@ export function PresentationControls({
           </div>
 
           {/* Progress text */}
-          <div className="text-sm text-muted-foreground font-medium">
+          <div className="text-sm text-black font-medium">
             {currentSection + 1} / {totalSections}
           </div>
         </div>

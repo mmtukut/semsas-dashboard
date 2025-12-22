@@ -20,10 +20,11 @@ export function TransportSection({ data }: TransportSectionProps) {
 
   return (
     <SectionPanel
-      title="Patient Transport"
+      title="RESMAT Patient Transport"
       subtitle="Emergency cases handled"
       icon={Truck}
       illustration={<PatientIcon className="w-full h-28" />}
+      titleColor="#DC143C"
     >
       <div className="flex flex-col h-full gap-4">
         {/* Summary cards */}
@@ -46,7 +47,7 @@ export function TransportSection({ data }: TransportSectionProps) {
                   <p className="text-2xl font-bold" style={{ color: item.color }}>
                     <AnimatedNumber value={item.value} />
                   </p>
-                  <p className="text-xs text-gray-600 leading-tight">{item.name}</p>
+                  <p className="text-xs text-black leading-tight">{item.name}</p>
                 </div>
               </div>
             )
@@ -55,7 +56,7 @@ export function TransportSection({ data }: TransportSectionProps) {
 
         {/* Monthly breakdown chart */}
         <div className="flex-1 bg-gray-50 rounded-xl p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2 text-center">
+          <p className="text-xs text-black uppercase tracking-wide font-semibold mb-2 text-center">
             Monthly Labor & Delivery Cases (June - November 2025)
           </p>
           <div className="h-44">
@@ -73,7 +74,7 @@ export function TransportSection({ data }: TransportSectionProps) {
                 <Legend
                   verticalAlign="top"
                   height={30}
-                  formatter={(value) => <span className="text-xs text-gray-600">{value}</span>}
+                  formatter={(value) => <span className="text-xs text-black">{value}</span>}
                 />
                 <Bar
                   dataKey="deliveries"
@@ -96,7 +97,7 @@ export function TransportSection({ data }: TransportSectionProps) {
 
         {/* RESMAT explanation */}
         <div className="p-3 bg-red-50 rounded-lg border border-red-200">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-black">
             <strong className="text-[#DC143C]">RESMAT</strong> = Rural Emergency Services and Maternal Transport
           </p>
         </div>

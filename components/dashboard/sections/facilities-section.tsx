@@ -25,6 +25,7 @@ export function FacilitiesSection({ data }: FacilitiesSectionProps) {
       subtitle="Healthcare centers in Gombe"
       icon={Building2}
       illustration={<HospitalIcon className="w-full h-28" />}
+      titleColor="#DC143C"
     >
       <div className="flex items-center justify-center gap-8 h-full">
         {/* Donut Chart */}

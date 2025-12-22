@@ -31,16 +31,17 @@ export function AmbulanceFleetSection({ data }: AmbulanceFleetSectionProps) {
       subtitle="Vehicles across all LGAs"
       icon={Ambulance}
       illustration={<AmbulanceIcon className="w-full h-28" />}
+      titleColor="#DC143C"
     >
       <div className="flex flex-col h-full gap-4">
         {/* Total ambulances */}
         <div className="flex justify-center">
-          <div className="flex items-center gap-4 p-4 rounded-xl bg-blue-50 border-2 border-[#0052A5]">
-            <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-[#0052A5]">
+          <div className="flex items-center gap-4 p-4 rounded-xl bg-red-50 border-2 border-[#FF0000]">
+            <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-[#FF0000]">
               <Ambulance className="w-7 h-7 text-white" />
             </div>
             <div>
-              <p className="text-4xl font-bold text-[#0052A5]">
+              <p className="text-4xl font-bold text-[#FF0000]">
                 <AnimatedNumber value={data.total} />
               </p>
               <p className="text-sm text-black">Total Ambulances in Gombe State</p>

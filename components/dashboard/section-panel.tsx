@@ -9,9 +9,10 @@ interface SectionPanelProps {
   icon: LucideIcon
   children: ReactNode
   illustration?: ReactNode
+  titleColor?: string // Added optional titleColor prop
 }
 
-export function SectionPanel({ title, subtitle, icon: Icon, children, illustration }: SectionPanelProps) {
+export function SectionPanel({ title, subtitle, icon: Icon, children, illustration, titleColor }: SectionPanelProps) {
   return (
     <div className="flex gap-6 h-full">
       {/* Left Panel - Section Title with Visual */}
@@ -30,7 +31,9 @@ export function SectionPanel({ title, subtitle, icon: Icon, children, illustrati
           )}
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-black text-center mb-2 text-balance">{title}</h2>
+          <h2 className="text-2xl font-bold text-center mb-2 text-balance" style={{ color: titleColor || "#000000" }}>
+            {title}
+          </h2>
 
           {/* Subtitle */}
           {subtitle && <p className="text-sm text-black text-center mb-3">{subtitle}</p>}

@@ -13,16 +13,17 @@ interface StaffSectionProps {
 
 export function StaffSection({ data }: StaffSectionProps) {
   const pieData = [
-    { name: "CEMTORS Offices", value: data.cemtorsOffices, color: "#0052A5", icon: Building2 },
+    { name: "CEMTTOs Offices", value: data.cemtorsOffices, color: "#0052A5", icon: Building2 },
     { name: "Volunteer Drivers", value: data.volunteerDrivers, color: "#00A86B", icon: Car },
   ]
 
   return (
     <SectionPanel
-      title="Our Team"
+      title="Our RESMAT Team"
       subtitle="Community responders"
       icon={Users}
       illustration={<MedicalTeamIcon className="w-full h-28" />}
+      titleColor="#DC143C"
     >
       <div className="flex items-center justify-center gap-8 h-full">
         {/* Donut Chart */}
@@ -84,8 +85,8 @@ export function StaffSection({ data }: StaffSectionProps) {
           {/* Explanation */}
           <div className="p-3 bg-gray-50 rounded-lg">
             <p className="text-xs text-black leading-relaxed">
-              <strong>CEMTORS</strong> = Community Emergency Transport Organizers who coordinate emergency transport at
-              community level
+              <strong>CEMTTOs</strong> = Community Emergency Medical Transport Triage Officers who coordinate rural
+              emergency transport
             </p>
           </div>
         </div>

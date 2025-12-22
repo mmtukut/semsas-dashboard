@@ -96,7 +96,7 @@ export function GombeMap({ data, highlightLGA }: GombeMapProps) {
         })}
 
         {/* Title */}
-        <text x="175" y="268" textAnchor="middle" className="text-[10px] font-medium fill-gray-500">
+        <text x="175" y="268" textAnchor="middle" className="text-[10px] font-medium fill-black">
           Gombe State LGA Coverage Map
         </text>
       </svg>
@@ -104,9 +104,9 @@ export function GombeMap({ data, highlightLGA }: GombeMapProps) {
       {/* Hover tooltip */}
       {hoveredLGA && (
         <div className="absolute top-2 right-2 bg-white rounded-lg shadow-lg p-3 border border-gray-200 z-10">
-          <p className="font-bold text-gray-900 text-sm">{hoveredLGA}</p>
-          <p className="text-xs text-gray-600">Coverage: {getLGACoverage(hoveredLGA)}%</p>
-          <p className="text-xs text-gray-500">
+          <p className="font-bold text-black text-sm">{hoveredLGA}</p>
+          <p className="text-xs text-black">Coverage: {getLGACoverage(hoveredLGA)}%</p>
+          <p className="text-xs text-black">
             Pop: {data.find((d) => d.name === hoveredLGA)?.population.toLocaleString()}
           </p>
         </div>
