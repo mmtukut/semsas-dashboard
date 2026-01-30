@@ -8,9 +8,9 @@ const inter = Inter({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "NEMSAS Dashboard | Gombe State Emergency Medical Services",
+  title: "SEMSAS Dashboard | Gombe State Emergency Medical Services",
   description:
-    "Real-time emergency medical services dashboard for Gombe State Emergency Medical Services & Ambulance System (NEMSAS) under the Gombe State Ministry of Health, Nigeria.",
+    "Real-time emergency medical services dashboard for Gombe State Emergency Medical Services & Ambulance System (SEMSAS) under the Gombe State Ministry of Health, Nigeria.",
   generator: "v0.app",
   icons: {
     icon: [
