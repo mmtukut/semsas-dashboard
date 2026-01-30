@@ -1,53 +1,13 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import Head from 'next/head';
 
-const inter = Inter({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "NEMSAS Dashboard | Gombe State Emergency Medical Services",
-  description:
-    "Real-time emergency medical services dashboard for Gombe State Emergency Medical Services & Ambulance System (NEMSAS) under the Gombe State Ministry of Health, Nigeria.",
-  generator: "v0.app",
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
-}
-
-export const viewport: Viewport = {
-  themeColor: "#0052A5",
-  width: "device-width",
-  initialScale: 1,
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function Layout({ children }) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  )
+    <>
+      <Head>
+        <title>SEMSAS Dashboard</title>
+        <link rel="icon" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_IY8YkQAmLSc96OLkmXQ3fSxDtIMY/fwappc7yj79BW1KK8gCfSq/public/images/nemsas-logo.png" />
+      </Head>
+      <main>{children}</main>
+    </>
+  );
 }
