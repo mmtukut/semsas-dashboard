@@ -14,7 +14,7 @@ export function AmbulanceServiceRunsSection({ data }: { data: AmbulanceServiceRu
     return (
       <SectionPanel
         title="Ambulance Service Runs"
-        icon={<Ambulance className="w-8 h-8" />}
+        icon={Ambulance}
         titleColor="#DC143C"
       >
         <div className="flex items-center justify-center h-96">
@@ -28,7 +28,7 @@ export function AmbulanceServiceRunsSection({ data }: { data: AmbulanceServiceRu
     <SectionPanel
       title="Ambulance Service Runs"
       subtitle="Patients Moved to Hospital"
-      icon={<Ambulance className="w-8 h-8" />}
+      icon={Ambulance}
       titleColor="#DC143C"
     >
       <div className="space-y-6">
