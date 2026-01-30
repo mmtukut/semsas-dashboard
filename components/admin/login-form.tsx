@@ -46,7 +46,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
           <div className="mx-auto w-16 h-16 bg-[#0052A5] rounded-xl flex items-center justify-center mb-4">
             <Activity className="w-8 h-8 text-white" />
           </div>
-          <CardTitle className="text-2xl">NEMSAS Admin Portal</CardTitle>
+          <CardTitle className="text-2xl">SEMSAS Admin Portal</CardTitle>
           <CardDescription>Sign in to manage dashboard data</CardDescription>
         </CardHeader>
         <CardContent>
