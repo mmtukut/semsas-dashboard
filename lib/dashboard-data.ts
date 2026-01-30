@@ -52,16 +52,20 @@ export interface DashboardData {
   trends: {
     monthly: { month: string; emergencies: number; deliveries: number }[]
   }
+  ambulanceServiceRuns: {
+    total: number
+    monthlyRuns: { month: string; runs: number }[]
+  }
   lastUpdated: string
 }
 
 export const defaultDashboardData: DashboardData = {
   overview: {
-    totalEmergencies: 1881, // Total from monthly data: 151+364+147+128+97+112 + RESMAT 887
+    totalEmergencies: 1999, // Total emergencies: 151+364+147+128+97+112+150 + RESMAT cases
     totalAmbulances: 53,
     avgResponseTime: "15 mins",
-    livesSaved: 729, // Total deliveries: 127+232+119+100+69+82
-    patientsTransported: 1856,
+    livesSaved: 783, // Total deliveries: 127+232+119+100+69+82+54
+    patientsTransported: 3807, // Previous 1,856 + ambulance service runs 1,951
     emergencyTrend: 8.5,
   },
   ambulanceFleet: {
@@ -111,9 +115,9 @@ export const defaultDashboardData: DashboardData = {
     ],
   },
   transport: {
-    totalDeliveries: 729, // 127+232+119+100+69+82
-    totalOtherEmergencies: 214, // 24+82+28+28+22+30
-    resmatCases: 943, // 887 + 112 (Nov total cases)
+    totalDeliveries: 783, // 127+232+119+100+69+82+54
+    totalOtherEmergencies: 236, // 24+82+28+28+22+30+22 (12+10 other emergency splits)
+    resmatCases: 1000, // Total emergencies + RESMAT cases
     monthlyData: [
       { month: "June", total: 151, deliveries: 127, otherEmergencies: 24 },
       { month: "July", total: 364, deliveries: 232, otherEmergencies: 82 },
@@ -121,19 +125,20 @@ export const defaultDashboardData: DashboardData = {
       { month: "September", total: 128, deliveries: 100, otherEmergencies: 28 },
       { month: "October", total: 97, deliveries: 69, otherEmergencies: 22 },
       { month: "November", total: 112, deliveries: 82, otherEmergencies: 30 },
+      { month: "December", total: 150, deliveries: 54, otherEmergencies: 12 },
     ],
   },
   emergencyTypes: {
     laborComplications: [
-      { name: "Prolonged Labor", count: 180, color: "#DC143C" },
-      { name: "Bleeding", count: 180, color: "#FF6B6B" },
-      { name: "Convulsions", count: 120, color: "#FFB81C" },
-      { name: "Other Complications", count: 197, color: "#64748B" },
+      { name: "Prolonged Labor", count: 36, color: "#DC143C" },
+      { name: "Bleeding", count: 18, color: "#FF6B6B" },
+      { name: "Convulsions", count: 4, color: "#FFB81C" },
+      { name: "Other Complications", count: 24, color: "#64748B" },
     ],
     pregnancyComplications: [
-      { name: "Bleeding", count: 240, color: "#DC143C" },
-      { name: "Convulsions (Eclampsia)", count: 95, color: "#FFB81C" },
-      { name: "Other Pregnancy Issues", count: 85, color: "#64748B" },
+      { name: "Bleeding", count: 27, color: "#DC143C" },
+      { name: "Convulsions (Eclampsia)", count: 9, color: "#FFB81C" },
+      { name: "Eclampsia", count: 4, color: "#8B5CF6" },
     ],
   },
   performance: {
@@ -166,6 +171,22 @@ export const defaultDashboardData: DashboardData = {
       { month: "Sep", emergencies: 128, deliveries: 100 },
       { month: "Oct", emergencies: 97, deliveries: 69 },
       { month: "Nov", emergencies: 112, deliveries: 82 },
+      { month: "Dec", emergencies: 150, deliveries: 54 },
+    ],
+  },
+  ambulanceServiceRuns: {
+    total: 1951, // Total patients moved to hospital
+    monthlyRuns: [
+      { month: "March", runs: 25 },
+      { month: "April", runs: 22 },
+      { month: "May", runs: 11 },
+      { month: "June", runs: 31 },
+      { month: "July", runs: 310 },
+      { month: "August", runs: 281 },
+      { month: "September", runs: 343 },
+      { month: "October", runs: 305 },
+      { month: "November", runs: 266 },
+      { month: "December", runs: 357 },
     ],
   },
   lastUpdated: new Date().toISOString(),
