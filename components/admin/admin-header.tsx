@@ -19,7 +19,7 @@ export function AdminHeader({ onLogout }: AdminHeaderProps) {
                 <Settings className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold leading-tight">NEMSAS Admin</h1>
+                <h1 className="text-lg font-bold leading-tight">SEMSAS Admin</h1>
                 <p className="text-xs text-white/70">Dashboard Management</p>
               </div>
             </div>
