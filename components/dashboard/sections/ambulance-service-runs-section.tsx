@@ -71,31 +71,31 @@ export function AmbulanceServiceRunsSection({ data }: { data: AmbulanceServiceRu
         </div>
 
         {/* Monthly breakdown table */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto bg-gray-50 rounded-lg p-4">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b-2 border-black">
-                <th className="text-left py-2 px-2 text-black font-semibold">Month</th>
-                <th className="text-right py-2 px-2 text-black font-semibold">Ambulance Runs</th>
-                <th className="text-right py-2 px-2 text-black font-semibold">% of Total</th>
+                <th className="text-left py-3 px-3 text-black font-bold whitespace-nowrap">Month</th>
+                <th className="text-center py-3 px-3 text-black font-bold whitespace-nowrap">Runs</th>
+                <th className="text-right py-3 px-3 text-black font-bold whitespace-nowrap">% Total</th>
               </tr>
             </thead>
             <tbody>
               {data.monthlyRuns.map((item, idx) => (
-                <tr key={idx} className="border-b border-black/10 hover:bg-gray-100/50">
-                  <td className="py-2 px-2 text-black">{item.month}</td>
-                  <td className="text-right py-2 px-2 text-black font-semibold">{item.runs.toLocaleString()}</td>
-                  <td className="text-right py-2 px-2 text-black">
+                <tr key={idx} className="border-b border-black/10 hover:bg-white">
+                  <td className="py-2 px-3 text-black font-medium">{item.month}</td>
+                  <td className="text-center py-2 px-3 text-black font-semibold">{item.runs}</td>
+                  <td className="text-right py-2 px-3 text-black">
                     {((item.runs / data.total) * 100).toFixed(1)}%
                   </td>
                 </tr>
               ))}
             </tbody>
             <tfoot>
-              <tr className="border-t-2 border-black font-bold">
-                <td className="py-2 px-2 text-black">TOTAL</td>
-                <td className="text-right py-2 px-2 text-black">{data.total.toLocaleString()}</td>
-                <td className="text-right py-2 px-2 text-black">100%</td>
+              <tr className="border-t-2 border-black bg-white font-bold">
+                <td className="py-3 px-3 text-black">TOTAL</td>
+                <td className="text-center py-3 px-3 text-black">{data.total}</td>
+                <td className="text-right py-3 px-3 text-black">100.0%</td>
               </tr>
             </tfoot>
           </table>
