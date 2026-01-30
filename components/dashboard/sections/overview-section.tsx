@@ -44,8 +44,8 @@ export function OverviewSection({ data }: OverviewSectionProps) {
 
   return (
     <SectionPanel
-      title="Monthly Overview"
-      subtitle="What we did this month"
+      title="NEMSAS Overview"
+      subtitle="Service Performance Summary"
       icon={Activity}
       illustration={<HeartPulseIcon className="w-full h-32" />}
     >

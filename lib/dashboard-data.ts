@@ -61,11 +61,11 @@ export interface DashboardData {
 
 export const defaultDashboardData: DashboardData = {
   overview: {
-    totalEmergencies: 1999, // Total emergencies: 151+364+147+128+97+112+150 + RESMAT cases
+    totalEmergencies: 2000, // Total emergencies: 151+364+147+128+97+112+150 + RESMAT cases
     totalAmbulances: 53,
     avgResponseTime: "15 mins",
     livesSaved: 783, // Total deliveries: 127+232+119+100+69+82+54
-    patientsTransported: 3807, // Previous 1,856 + ambulance service runs 1,951
+    patientsTransported: 1951, // Ambulance service runs (patients moved to hospital)
     emergencyTrend: 8.5,
   },
   ambulanceFleet: {
