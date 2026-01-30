@@ -13,6 +13,7 @@ import { EmergencyTypesSection } from "@/components/dashboard/sections/emergency
 import { PerformanceSection } from "@/components/dashboard/sections/performance-section"
 import { CensusSection } from "@/components/dashboard/sections/census-section"
 import { TrendsSection } from "@/components/dashboard/sections/trends-section"
+import { AmbulanceServiceRunsSection } from "@/components/dashboard/sections/ambulance-service-runs-section"
 import { defaultDashboardData } from "@/lib/dashboard-data"
 
 const SECTION_DURATION = 48000 // 48 seconds per section
@@ -28,6 +29,7 @@ const sectionNames = [
   "Performance",
   "Census",
   "Trends",
+  "Service Runs",
 ]
 
 export default function Dashboard() {
@@ -35,7 +37,7 @@ export default function Dashboard() {
   const [isPlaying, setIsPlaying] = useState(true)
   const [data] = useState(defaultDashboardData)
 
-  const totalSections = 10
+  const totalSections = 11
 
   const goToNext = useCallback(() => {
     setCurrentSection((prev) => (prev + 1) % totalSections)
@@ -84,6 +86,7 @@ export default function Dashboard() {
     <PerformanceSection key="performance" data={data.performance} />,
     <CensusSection key="census" data={data.census} />,
     <TrendsSection key="trends" data={data.trends} />,
+    <AmbulanceServiceRunsSection key="serviceRuns" data={data.ambulanceServiceRuns} />,
   ]
 
   return (

@@ -15,7 +15,7 @@ export function TrendsSection({ data }: TrendsSectionProps) {
 
   return (
     <SectionPanel
-      title="Deliveries Over Time"
+      title="Monthly Labor & Delivery Cases (June - December 2025)"
       subtitle="Monthly births we helped with"
       icon={TrendingUp}
       illustration={<TrendUpIcon className="w-full h-28" />}

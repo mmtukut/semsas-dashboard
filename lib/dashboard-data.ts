@@ -52,32 +52,36 @@ export interface DashboardData {
   trends: {
     monthly: { month: string; emergencies: number; deliveries: number }[]
   }
+  ambulanceServiceRuns: {
+    total: number
+    monthlyRuns: { month: string; runs: number }[]
+  }
   lastUpdated: string
 }
 
 export const defaultDashboardData: DashboardData = {
   overview: {
-    totalEmergencies: 1799, // Total from monthly data: 151+364+147+128+97 + RESMAT 887
-    totalAmbulances: 46,
+    totalEmergencies: 2012, // Total emergencies: 151+364+147+128+97+112+150 + RESMAT cases
+    totalAmbulances: 53,
     avgResponseTime: "15 mins",
-    livesSaved: 647, // Total deliveries: 127+232+119+100+69
-    patientsTransported: 1774,
+    livesSaved: 783, // Total deliveries: 127+232+119+100+69+82+54
+    patientsTransported: 1951, // Ambulance service runs (patients moved to hospital)
     emergencyTrend: 8.5,
   },
   ambulanceFleet: {
-    total: 46,
+    total: 53,
     byLGA: [
-      { name: "Gombe", shortName: "GME", count: 12 },
+      { name: "Gombe", shortName: "GME", count: 14 },
       { name: "Akko", shortName: "AKK", count: 10 },
       { name: "Balanga", shortName: "BLG", count: 6 },
       { name: "Kwami", shortName: "KWM", count: 4 },
-      { name: "Kaltungo", shortName: "KLT", count: 4 },
+      { name: "Kaltungo", shortName: "KLT", count: 5 },
       { name: "Yamaltu Deba", shortName: "YDB", count: 3 },
-      { name: "Billiri", shortName: "BLR", count: 2 },
+      { name: "Billiri", shortName: "BLR", count: 3 },
       { name: "Dukku", shortName: "DKU", count: 2 },
       { name: "Funakaye", shortName: "FKY", count: 2 },
-      { name: "Nafada", shortName: "NFD", count: 1 },
-      { name: "Shongom", shortName: "SHM", count: 1 },
+      { name: "Nafada", shortName: "NFD", count: 2 },
+      { name: "Shongom", shortName: "SHM", count: 2 },
     ],
   },
   staff: {
@@ -111,29 +115,30 @@ export const defaultDashboardData: DashboardData = {
     ],
   },
   transport: {
-    totalDeliveries: 647, // 127+232+119+100+69
-    totalOtherEmergencies: 184, // 24+82+28+28+22
-    resmatCases: 887, //
+    totalDeliveries: 783, // 127+232+119+100+69+82+54
+    totalOtherEmergencies: 236, // 24+82+28+28+22+30+22 (12+10 other emergency splits)
+    resmatCases: 1000, // Total emergencies + RESMAT cases
     monthlyData: [
       { month: "June", total: 151, deliveries: 127, otherEmergencies: 24 },
       { month: "July", total: 364, deliveries: 232, otherEmergencies: 82 },
       { month: "August", total: 147, deliveries: 119, otherEmergencies: 28 },
       { month: "September", total: 128, deliveries: 100, otherEmergencies: 28 },
       { month: "October", total: 97, deliveries: 69, otherEmergencies: 22 },
-      { month: "November", total: 0, deliveries: 0, otherEmergencies: 0 },
+      { month: "November", total: 112, deliveries: 82, otherEmergencies: 30 },
+      { month: "December", total: 150, deliveries: 54, otherEmergencies: 12 },
     ],
   },
   emergencyTypes: {
     laborComplications: [
-      { name: "Prolonged Labor", count: 180, color: "#DC143C" },
-      { name: "Bleeding", count: 150, color: "#FF6B6B" },
-      { name: "Convulsions", count: 120, color: "#FFB81C" },
-      { name: "Other Complications", count: 197, color: "#64748B" },
+      { name: "Prolonged Labor", count: 36, color: "#DC143C" },
+      { name: "Bleeding", count: 18, color: "#FF6B6B" },
+      { name: "Convulsions", count: 4, color: "#FFB81C" },
+      { name: "Other Complications", count: 24, color: "#64748B" },
     ],
     pregnancyComplications: [
-      { name: "Bleeding", count: 220, color: "#DC143C" },
-      { name: "Convulsions (Eclampsia)", count: 95, color: "#FFB81C" },
-      { name: "Other Pregnancy Issues", count: 85, color: "#64748B" },
+      { name: "Bleeding", count: 27, color: "#DC143C" },
+      { name: "Convulsions (Eclampsia)", count: 9, color: "#FFB81C" },
+      { name: "Eclampsia", count: 4, color: "#8B5CF6" },
     ],
   },
   performance: {
@@ -145,17 +150,17 @@ export const defaultDashboardData: DashboardData = {
   },
   census: {
     byLGA: [
-      { name: "Gombe", population: 268536, ambulances: 12, ratio: "1:22,378" },
+      { name: "Gombe", population: 268536, ambulances: 14, ratio: "1:19,181" },
       { name: "Akko", population: 353679, ambulances: 10, ratio: "1:35,368" },
       { name: "Balanga", population: 170918, ambulances: 6, ratio: "1:28,486" },
       { name: "Kwami", population: 159442, ambulances: 4, ratio: "1:39,861" },
-      { name: "Kaltungo", population: 149805, ambulances: 4, ratio: "1:37,451" },
+      { name: "Kaltungo", population: 149805, ambulances: 5, ratio: "1:29,961" },
       { name: "Yamaltu Deba", population: 240922, ambulances: 3, ratio: "1:80,307" },
-      { name: "Billiri", population: 159885, ambulances: 2, ratio: "1:79,943" },
+      { name: "Billiri", population: 159885, ambulances: 3, ratio: "1:53,295" },
       { name: "Dukku", population: 207117, ambulances: 2, ratio: "1:103,559" },
       { name: "Funakaye", population: 246646, ambulances: 2, ratio: "1:123,323" },
-      { name: "Nafada", population: 138185, ambulances: 1, ratio: "1:138,185" },
-      { name: "Shongom", population: 137254, ambulances: 1, ratio: "1:137,254" },
+      { name: "Nafada", population: 138185, ambulances: 2, ratio: "1:69,093" },
+      { name: "Shongom", population: 137254, ambulances: 2, ratio: "1:68,627" },
     ],
   },
   trends: {
@@ -165,7 +170,23 @@ export const defaultDashboardData: DashboardData = {
       { month: "Aug", emergencies: 147, deliveries: 119 },
       { month: "Sep", emergencies: 128, deliveries: 100 },
       { month: "Oct", emergencies: 97, deliveries: 69 },
-      { month: "Nov", emergencies: 0, deliveries: 0 },
+      { month: "Nov", emergencies: 112, deliveries: 82 },
+      { month: "Dec", emergencies: 150, deliveries: 54 },
+    ],
+  },
+  ambulanceServiceRuns: {
+    total: 1951, // Total patients moved to hospital
+    monthlyRuns: [
+      { month: "March", runs: 25 },
+      { month: "April", runs: 22 },
+      { month: "May", runs: 11 },
+      { month: "June", runs: 31 },
+      { month: "July", runs: 310 },
+      { month: "August", runs: 281 },
+      { month: "September", runs: 343 },
+      { month: "October", runs: 305 },
+      { month: "November", runs: 266 },
+      { month: "December", runs: 357 },
     ],
   },
   lastUpdated: new Date().toISOString(),

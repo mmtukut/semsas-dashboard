@@ -46,12 +46,12 @@ export function OverviewForm({ data, onSave }: OverviewFormProps) {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="activeAmbulances">Active Ambulances</Label>
+              <Label htmlFor="totalAmbulances">Total Ambulances</Label>
               <Input
-                id="activeAmbulances"
+                id="totalAmbulances"
                 type="number"
-                value={formData.activeAmbulances}
-                onChange={(e) => setFormData({ ...formData, activeAmbulances: Number(e.target.value) })}
+                value={formData.totalAmbulances}
+                onChange={(e) => setFormData({ ...formData, totalAmbulances: Number(e.target.value) })}
               />
             </div>
             <div className="space-y-2">
